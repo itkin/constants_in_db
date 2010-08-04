@@ -1,0 +1,75 @@
+ConstantsInDb (for RoR 2.3.5 and above)
+=======================================
+
+This plugin allows you to use some active record model instances as constants, and give a way to
+ - load and update AR constants at runtime
+ - manage AR constants through seeds files
+
+
+Example
+=======
+
+To load constants stored in db at runtime, add the following code to your AR models :
+
+
+class Exemple < ActiveRecord::Base
+
+  cache_constants :name
+
+end
+
+where name is a string attribute of the ActiveRecord model Exemple, used as unique key to instanciate the Exemple's constants
+
+
+
+To manage your constants thanks to seeds, build up the following subdirectory architecture in the "db" directory :
+
+
+db
+|_ seeds
+|     |_ common
+|     |     |_ seeds_file_1.yml
+|     |     |_ seeds_file_2.yml
+|     |     |_ ..
+|     |
+|     |_ development
+|     |     |_ seeds_file_1.yml
+|     |
+|     |_ test
+|
+|_ seeds.rb
+
+Under the seeds directory, create one directory by environment, and a "common" directory, which is used by default to load seeds
+
+In seeds.rb, you'll then be able to instanciate and save your seeds as follow :
+
+#seeds.rb
+
+seeds = Seeds.new    => Load all seeds files found in seeds sub-directories
+seeds.load_data      => Load all data without overriding the values for data allready stored in db
+seeds.save           => pass the save method to all data previously loaded
+
+or
+
+seeds = Seeds.new(:only => :seeds_file_1) => only load seeds_file_1.yml
+seeds.load_data(:override => true)        => override data values with seeds values
+seeds.save!                               => pass the save! method to all data previously loaded
+
+or
+
+seeds = Seeds.new(:except => :seeds_file_1) => don't load seeds_file_1.yml
+seeds.load_data(:override => true)
+seeds.save!                                 
+
+
+TODO
+====
+
+* restrict options should take class names to fully handle STI models
+* write a generator to build default seeds directories architecture
+* gemmify the plugin
+* rails 3 testing
+
+
+
+Copyright (c) 2010 webflows, released under the MIT license
