@@ -1,0 +1,21 @@
+sqlite:
+  :adapter: sqlite
+  :database: vendor/plugins/constants_in_db/test/constants_in_db.sqlite.db
+
+sqlite3:
+  :adapter: sqlite3
+  :database: vendor/plugins/constants_in_db/test/constants_in_db.sqlite3.db
+
+postgresql:
+  :adapter: postgresql
+  :username: carla
+  :password: carla
+  :database: constants_in_db
+  :min_messages: ERROR
+
+mysql:
+  :adapter: mysql
+  :host: localhost
+  :username: carla
+  :password: carla
+  :database: constants_in_db

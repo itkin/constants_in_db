@@ -1,0 +1,13 @@
+record_one:
+  name: record_one
+  value: 1
+
+record_two:
+  name: record_two
+  value: 2
+
+record_tree:
+  name: record_tree
+  type: ConstantTestTwo
+  value: 3
+
