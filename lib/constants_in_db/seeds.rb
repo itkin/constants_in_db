@@ -4,7 +4,7 @@ class Seeds
 
   DEFAULT_KEY_NAMES = ['id', 'key', 'constant_name','short','name']
 
-  PATH = File.join(RAILS_ROOT,'db','seeds')
+  PATH = File.join(Rails.root,'db','seeds')
   
   attr_accessor :keys, :files, :data
 
