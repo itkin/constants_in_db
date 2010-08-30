@@ -1,8 +1,11 @@
 module ConstantsCache
 
   def cache_constants(field)
-    find(:all).each { |instance| cache_constant(field, instance) }
-    after_save {|instance| self.class.cache_constant(field, instance) }
+    begin
+      find(:all).each { |instance| cache_constant(field, instance) }
+      after_save {|instance| self.class.cache_constant(field, instance) }
+    rescue ActiveRecord::StatementInvalid
+    end
   end
   
   def cache_constant(field=:name,instance=nil)
