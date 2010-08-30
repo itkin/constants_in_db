@@ -1,6 +1,5 @@
 require 'erb'
 require 'yaml'
-
 class SeedsFile < File
 
   attr_accessor :data, :instances, :base_class
