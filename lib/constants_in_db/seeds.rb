@@ -51,7 +51,7 @@ class Seeds
 
   #Return an array of yaml files
   def self.all_file_paths
-    file_paths_from_directory(RAILS_ENV).inject(file_paths_from_directory('common')) do |sum, value|
+    file_paths_from_directory(Rails.env).inject(file_paths_from_directory('common')) do |sum, value|
       sum.update(value.first => value.last)
     end
   end
