@@ -31,7 +31,7 @@ class SeedsFile < File
 
       instance = klass.send("find_or_initialize_by_#{key}", attr[key])
       if instance.new_record? or options[:override]
-        instance.send(:attributes=, attr, false)
+        instance.send(:attributes=, attr)
       end
       instance
     end.flatten.compact
