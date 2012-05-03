@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module ConstantsCache
 
   def cache_constants(field)
@@ -20,7 +21,7 @@ module ConstantsCache
     if args.is_a?(Array)
       args.collect{|arg| const_get(arg) }
     else
-      super(args.to_s.upcase)
+      super(args)
     end
   end
 

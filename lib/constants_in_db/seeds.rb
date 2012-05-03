@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Seeds
 
   DEFAULT_KEY_NAMES = ['id', 'key', 'constant_name','short','name']

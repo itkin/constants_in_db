@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #Bon je suis as hyper sur de moi dans tous ces .. de require
 require 'rubygems'
 require 'test/unit'

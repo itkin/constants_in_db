@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 ActiveRecord::Schema.define(:version => 0) do
 
   create_table "constant_test_ones", :force => true do |t|
