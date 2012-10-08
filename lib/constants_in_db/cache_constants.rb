@@ -5,6 +5,15 @@ module ConstantsCache
     begin
       find(:all).each { |instance| cache_constant(field, instance) }
       after_save {|instance| self.class.cache_constant(field, instance) }
+      model_name.human
+      define_method :human do |opts={}|
+        scopes = self.class.lookup_ancestors.map do |klass|
+          klass.model_name.i18n_key
+        end.map do |klass_key|
+          [self.class.i18n_scope, :constants, klass_key]
+        end
+        I18n.translate( send(field).underscore, {:scope => scopes, :count => 1, :default => send(field)}.merge(opts.except(:default)) )
+      end
     rescue ActiveRecord::StatementInvalid
     end
   end
